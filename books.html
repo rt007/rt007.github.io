@@ -1,36 +1,929 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Books | Romal</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books | Romal's Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f5f0eb;
+            --bg-warm: #ece5dd;
+            --text: #2a2520;
+            --text-muted: #7a7068;
+            --accent: #c45d3e;
+            --accent-soft: #e8a990;
+            --card-bg: #fffbf7;
+            --border: #d9d0c7;
+            --tag-bg: #e8e0d8;
+            --tag-active: #2a2520;
+            --tag-active-text: #f5f0eb;
+            --shadow: rgba(42, 37, 32, 0.08);
+            --radius: 12px;
+            --nav-bg: #2a2520;
+            --nav-text: #e8e0d8;
+            --hero-bg: #ece5dd;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Grain overlay --- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ===========================
+           NAVBAR
+           =========================== */
+        .site-nav {
+            background: var(--nav-bg);
+            padding: 0 32px;
+            z-index: 200;
+        }
+
+        .site-nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+
+        .site-nav .brand {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.15rem;
+            color: var(--nav-text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+        .site-nav .brand:hover {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(232, 224, 216, 0.65);
+            font-size: 0.84rem;
+            padding: 6px 14px;
+            border-radius: 100px;
+            transition: color 0.2s, background 0.2s;
+            letter-spacing: 0.01em;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255,255,255,0.12);
+            font-weight: 500;
+        }
+
+        /* ===========================
+           HERO BANNER
+           =========================== */
+        .hero-banner {
+            background: var(--hero-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 40px 32px;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+        .hero-photo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 4px 16px var(--shadow);
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero-text h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .hero-text h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-text p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            line-height: 1.5;
+        }
+
+        .hero-socials {
+            flex-shrink: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .hero-socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .hero-socials a:hover {
+            border-color: var(--text);
+            color: var(--text);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        .hero-socials a svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===========================
+           CONTAINER & CONTENT
+           =========================== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .book-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .book-count strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+        .book-count .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* --- Filters --- */
+        .filters {
+            padding: 28px 0 12px;
+            z-index: 100;
+            background: var(--bg);
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-right: 4px;
+            font-weight: 500;
+        }
+
+        .filter-btn {
+            padding: 7px 16px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: var(--card-bg);
+            color: var(--text-muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+        .filter-btn.active {
+            background: var(--tag-active);
+            color: var(--tag-active-text);
+            border-color: var(--tag-active);
+        }
+
+        .filter-divider {
+            width: 1px;
+            height: 24px;
+            background: var(--border);
+            margin: 0 8px;
+        }
+
+        /* --- Grid --- */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 28px 20px;
+            padding: 32px 0 80px;
+        }
+
+        /* --- Book Card --- */
+        .book-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardIn 0.5s ease forwards;
+        }
+
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .book-cover-wrap {
+            position: relative;
+            aspect-ratio: 2 / 3;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--bg-warm);
+            box-shadow: 0 4px 20px var(--shadow), 0 1px 3px var(--shadow);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+
+        .book-cover-wrap:hover {
+            transform: translateY(-6px) rotate(-1deg);
+            box-shadow: 0 12px 40px rgba(42, 37, 32, 0.15), 0 2px 6px var(--shadow);
+        }
+
+        .book-cover-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-cover-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(145deg, var(--bg-warm), #d9cfc4);
+            text-align: center;
+        }
+        .book-cover-placeholder .placeholder-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            opacity: 0.4;
+        }
+        .book-cover-placeholder .placeholder-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        .book-info {
+            padding: 12px 2px 0;
+        }
+
+        .book-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        .book-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .book-tag {
+            font-size: 0.68rem;
+            padding: 3px 9px;
+            background: var(--tag-bg);
+            border-radius: 100px;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+        .book-tag.year-tag {
+            background: transparent;
+            border: 1px solid var(--border);
+        }
+
+        /* --- Empty state --- */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+        }
+        .empty-state .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.4;
+        }
+        .empty-state p {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.3rem;
+        }
+
+        /* ===========================
+           FOOTER
+           =========================== */
+        .site-footer {
+            background: var(--nav-bg);
+            color: rgba(232, 224, 216, 0.7);
+            padding: 48px 32px 36px;
+            margin-top: auto;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--nav-text);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-social-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-social-list li a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: rgba(232, 224, 216, 0.6);
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .footer-social-list li a:hover {
+            color: #fff;
+        }
+        .footer-social-list li a svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: rgba(232, 224, 216, 0.6);
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: #fff;
+        }
+        .footer-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .footer-divider {
+            max-width: 1100px;
+            margin: 32px auto 0;
+            border: none;
+            border-top: 1px solid rgba(232, 224, 216, 0.1);
+            padding-top: 20px;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            font-size: 0.78rem;
+            color: rgba(232, 224, 216, 0.35);
+            text-align: center;
+        }
+
+        /* ===========================
+           RESPONSIVE
+           =========================== */
+        @media (max-width: 768px) {
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-text p { text-align: center; }
+            .hero-socials { justify-content: center; }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-social-list { align-items: center; }
+            .footer-col:nth-child(2) { text-align: center; }
+            .footer-col:nth-child(3) { text-align: center; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 0 18px; }
+            .site-nav { padding: 0 18px; }
+            .hero-banner { padding: 28px 18px; }
+            .site-footer { padding: 36px 18px 28px; }
+
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px 14px;
+            }
+            .filter-divider { display: none; }
+            .hero-text h1 { font-size: 1.6rem; }
+            .hero-photo img { width: 80px; height: 80px; }
+
+            .nav-links a { padding: 6px 10px; font-size: 0.78rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <h1>📚 Books</h1>
-  <p>Check out the books I'm currently reading / have read.</p>
+<!-- ===== NAVBAR ===== -->
+<nav class="site-nav">
+    <div class="site-nav-inner">
+        <a href="../index.html" class="brand">Romal's Website</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="books.html" class="active">Books</a>
+            <a href="../about/index.html">About</a>
+        </div>
+    </div>
+</nav>
 
-  <h2>Total Books: <span id="bookCount">3</span></h2>
+<!-- ===== HERO BANNER ===== -->
+<div class="hero-banner">
+    <div class="hero-inner">
+        <div class="hero-photo">
+            <img src="assets/images/profile.png" alt="Romal">
+        </div>
+        <div class="hero-text">
+            <h1>Books I've <em>enjoyed</em> reading</h1>
+            <p>Check out the books I've enjoyed reading - a mix of genres, ideas, and stories that have stayed with me.</p>
+        </div>
+        <div class="hero-socials">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/romalthakkar" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <!-- X / Twitter -->
+            <a href="https://x.com/TheromalEnergy" target="_blank" rel="noopener" aria-label="X">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://rt007.github.io/" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <!-- Linktree -->
+            <a href="https://linktr.ee/romalt" target="_blank" rel="noopener" aria-label="Linktree">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066l-.038-4.29-3.05 2.75L3.2 11.39l3.18-2.87L3.2 5.65l1.665-2.137 3.05 2.75.037-4.291h2.726l-.036 4.29 3.05-2.75L15.357 5.65l-3.18 2.87 3.18 2.87-1.665 2.136-3.05-2.75.036 4.29H7.953zm2.726 2.848v5.086h-2.726v-5.086h2.726z"/></svg>
+            </a>
+        </div>
+    </div>
+</div>
 
-  <div class="category">
-    <h3>Personal Development</h3>
-    
-    <div class="book-grid">
-      
-      <div class="book-card">
-        <img src="images/atomic-habits.jpg" alt="Atomic Habits">
-        <h4>Atomic Habits</h4>
-        <p class="tags">2024 • Self-Improvement</p>
-      </div>
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+    <div class="container">
 
-      <div class="book-card">
-        <img src="images/deep-work.jpg" alt="Deep Work">
-        <h4>Deep Work</h4>
-        <p class="tags">2025 • Productivity</p>
-      </div>
+        <div style="padding-top: 24px;">
+            <div class="book-count">
+                <span class="dot"></span>
+                <span><strong id="visibleCount">0</strong> books</span>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <nav class="filters">
+            <div class="filter-row" id="filterRow">
+                <span class="filter-label">Category</span>
+            </div>
+        </nav>
+
+        <!-- Grid -->
+        <section class="books-grid" id="booksGrid"></section>
 
     </div>
-  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <!-- Social -->
+        <div class="footer-col">
+            <h4>Social</h4>
+            <ul class="footer-social-list">
+                <li>
+                    <a href="https://linkedin.com/in/romalthakkar" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                </li>
+                <li>
+                    <a href="https://x.com/TheromalEnergy" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        X
+                    </a>
+                </li>
+                <li>
+                    <a href="https://rt007.github.io/" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://linktr.ee/romalt" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066l-.038-4.29-3.05 2.75L3.2 11.39l3.18-2.87L3.2 5.65l1.665-2.137 3.05 2.75.037-4.291h2.726l-.036 4.29 3.05-2.75L15.357 5.65l-3.18 2.87 3.18 2.87-1.665 2.136-3.05-2.75.036 4.29H7.953zm2.726 2.848v5.086h-2.726v-5.086h2.726z"/></svg>
+                        Linktree
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-col" style="display: flex; flex-direction: column; align-items: center;">
+            <h4>Resources</h4>
+            <a href="https://github.com/rt007/rt007.github.io" target="_blank" rel="noopener" class="footer-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Source Code
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="footer-col" style="display: flex; flex-direction: column; align-items: flex-end;">
+            <h4>About</h4>
+            <a href="../about/index.html" class="footer-link">About</a>
+        </div>
+    </div>
+
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+        &copy; 2025
+    </div>
+</footer>
+
+<script>
+/**
+ * ========================================
+ *  BOOK DATA — Alphabetically ordered
+ * ========================================
+ */
+const books = [
+    {
+        title: "And Then There Were None",
+        author: "Agatha Christie",
+        cover: "resources/and-then-there-were-none.jpg",
+        category: "Fiction",
+        year: "2013",
+        tags: ["crime"]
+    },
+    {
+        title: "Atomic Habits",
+        author: "James Clear",
+        cover: "resources/atomic-habits.jpg",
+        category: "Non-Fiction",
+        year: "2024",
+        tags: ["self-devp"]
+    },
+    {
+        title: "Ender's Game",
+        author: "Orson Scott Card",
+        cover: "resources/enders-game.jpg",
+        category: "Fiction",
+        year: "2025",
+        tags: ["sci-fi"]
+    },
+    {
+        title: "Finance for Non-Finance Managers",
+        author: "Gene Siciliano",
+        cover: "resources/finance-for-non-finance-managers.jpg",
+        category: "Non-Fiction",
+        year: "2012",
+        tags: ["finance"]
+    },
+    {
+        title: "How to Win Friends and Influence People",
+        author: "Dale Carnegie",
+        cover: "resources/how-to-win-friends-and-influence-people.jpg",
+        category: "Non-Fiction",
+        year: "2017",
+        tags: ["self-devp"]
+    },
+    {
+        title: "Kane and Abel",
+        author: "Jeffrey Archer",
+        cover: "resources/kane-and-abel.jpg",
+        category: "Fiction",
+        year: "2012",
+        tags: ["drama"]
+    },
+    {
+        title: "Murder on the Orient Express",
+        author: "Agatha Christie",
+        cover: "resources/murder-on-the-orient-express.jpg",
+        category: "Fiction",
+        year: "2012",
+        tags: ["crime"]
+    },
+    {
+        title: "Not a Penny More, Not a Penny Less",
+        author: "Jeffrey Archer",
+        cover: "resources/not-a-penny-more-not-a-penny-less.jpg",
+        category: "Fiction",
+        year: "2011",
+        tags: ["crime"]
+    },
+    {
+        title: "Outliers",
+        author: "Malcolm Gladwell",
+        cover: "resources/outliers.jpg",
+        category: "Non-Fiction",
+        year: "2015",
+        tags: ["self-devp"]
+    },
+    {
+        title: "Principles: Life and Work",
+        author: "Ray Dalio",
+        cover: "resources/principles-life-and-work.jpg",
+        category: "Non-Fiction",
+        year: "2020",
+        tags: ["business"]
+    },
+    {
+        title: "Rich Dad Poor Dad",
+        author: "Robert T. Kiyosaki",
+        cover: "resources/rich-dad-poor-dad.jpg",
+        category: "Non-Fiction",
+        year: "2019",
+        tags: ["finance"]
+    },
+    {
+        title: "Sam Walton: Made in America",
+        author: "Sam Walton",
+        cover: "resources/sam-walton-made-in-america.jpg",
+        category: "Non-Fiction",
+        year: "2020",
+        tags: ["business"]
+    },
+    {
+        title: "Sherlock Holmes",
+        author: "Arthur Conan Doyle",
+        cover: "resources/sherlock-holmes.jpg",
+        category: "Fiction",
+        year: "2014",
+        tags: ["detective"]
+    },
+    {
+        title: "Shoe Dog",
+        author: "Phil Knight",
+        cover: "resources/shoe-dog.jpg",
+        category: "Non-Fiction",
+        year: "2021",
+        tags: ["business"]
+    },
+    {
+        title: "Steve Jobs",
+        author: "Walter Isaacson",
+        cover: "resources/steve-jobs.jpg",
+        category: "Non-Fiction",
+        year: "2021",
+        tags: ["business"]
+    },
+    {
+        title: "The 38 Letters from J.D. Rockefeller to His Son",
+        author: "John D. Rockefeller",
+        cover: "resources/the-38-letters-from-jd-rockefeller-to-his-son.jpg",
+        category: "Non-Fiction",
+        year: "2025",
+        tags: ["self-devp"]
+    },
+    {
+        title: "The Art of War",
+        author: "Sun Tzu",
+        cover: "resources/art-of-war.jpg",
+        category: "Non-Fiction",
+        year: "2018",
+        tags: ["strategy"]
+    },
+    {
+        title: "The Everything Store: Jeff Bezos and the Age of Amazon",
+        author: "Brad Stone",
+        cover: "resources/the-everything-store.jpg",
+        category: "Non-Fiction",
+        year: "2020",
+        tags: ["business"]
+    },
+    {
+        title: "The Intelligent Investor",
+        author: "Benjamin Graham",
+        cover: "resources/the-intelligent-investor.jpg",
+        category: "Non-Fiction",
+        year: "2019",
+        tags: ["finance"]
+    },
+    {
+        title: "The Murder of Roger Ackroyd",
+        author: "Agatha Christie",
+        cover: "resources/the-murder-of-roger-ackroyd.jpg",
+        category: "Fiction",
+        year: "2013",
+        tags: ["crime"]
+    },
+    {
+        title: "The Wright Brothers",
+        author: "David McCullough",
+        cover: "resources/the-wright-brothers.jpg",
+        category: "Non-Fiction",
+        year: "2016",
+        tags: ["history"]
+    },
+    {
+        title: "Zero to One",
+        author: "Peter Thiel",
+        cover: "resources/zero-to-one.jpg",
+        category: "Non-Fiction",
+        year: "2016",
+        tags: ["startups"]
+    }
+];
+
+// ---- State ----
+let activeCategory = "All";
+
+// ---- Categories ----
+const categories = ["All", "Fiction", "Non-Fiction"];
+
+// ---- Build filter buttons ----
+function buildFilters() {
+    const row = document.getElementById("filterRow");
+
+    categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className = "filter-btn" + (cat === "All" ? " active" : "");
+        btn.textContent = cat;
+        btn.dataset.filterType = "category";
+        btn.dataset.value = cat;
+        btn.addEventListener("click", () => {
+            activeCategory = cat;
+            updateFilters();
+            renderBooks();
+        });
+        row.appendChild(btn);
+    });
+}
+
+function updateFilters() {
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        const isActive = btn.dataset.filterType === "category" && btn.dataset.value === activeCategory;
+        btn.classList.toggle("active", isActive);
+    });
+}
+
+// ---- Render book cards ----
+function renderBooks() {
+    const grid = document.getElementById("booksGrid");
+    grid.innerHTML = "";
+
+    const filtered = books.filter(b => {
+        return activeCategory === "All" || b.category === activeCategory;
+    });
+
+    document.getElementById("visibleCount").textContent = filtered.length;
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon">📚</div>
+                <p>No books match these filters</p>
+            </div>`;
+        return;
+    }
+
+    filtered.forEach((book, i) => {
+        const card = document.createElement("div");
+        card.className = "book-card";
+        card.style.animationDelay = `${i * 0.06}s`;
+
+        const coverHTML = book.cover
+            ? `<img src="${book.cover}" alt="${book.title}" loading="lazy">`
+            : `<div class="book-cover-placeholder">
+                    <div class="placeholder-icon">📖</div>
+                    <div class="placeholder-title">${book.title}</div>
+               </div>`;
+
+        let tagsHTML = "";
+        if (book.year) tagsHTML += `<span class="book-tag year-tag">${book.year}</span>`;
+        if (book.category) tagsHTML += `<span class="book-tag">${book.category}</span>`;
+        if (book.tags) book.tags.forEach(t => { tagsHTML += `<span class="book-tag">${t}</span>`; });
+
+        card.innerHTML = `
+            <div class="book-cover-wrap">${coverHTML}</div>
+            <div class="book-info">
+                <div class="book-title">${book.title}</div>
+                <div class="book-tags">${tagsHTML}</div>
+            </div>`;
+
+        grid.appendChild(card);
+    });
+}
+
+// ---- Init ----
+buildFilters();
+renderBooks();
+</script>
 
 </body>
 </html>
-
