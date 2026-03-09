@@ -657,36 +657,200 @@
 </footer>
 
 <script>
+/**
+ * ========================================
+ *  BOOK DATA — Alphabetically ordered
+ * ========================================
+ */
 const books = [
-    { title: "And Then There Were None", author: "Agatha Christie", cover: "assets/images/books/and-then-there-were-none.jpg", category: "Fiction", year: "2013", tags: ["crime"] },
-    { title: "Atomic Habits", author: "James Clear", cover: "assets/images/books/atomic-habits.jpg", category: "Non-Fiction", year: "2024", tags: ["self-devp"] },
-    { title: "Ender's Game", author: "Orson Scott Card", cover: "assets/images/books/enders-game.jpg", category: "Fiction", year: "2025", tags: ["sci-fi"] },
-    { title: "Finance for Non-Finance Managers", author: "Gene Siciliano", cover: "assets/images/books/finance-for-non-finance-managers.jpg", category: "Non-Fiction", year: "2012", tags: ["finance"] },
-    { title: "How to Win Friends and Influence People", author: "Dale Carnegie", cover: "assets/images/books/how-to-win-friends-and-influence-people.jpg", category: "Non-Fiction", year: "2017", tags: ["self-devp"] },
-    { title: "Kane and Abel", author: "Jeffrey Archer", cover: "assets/images/books/kane-and-abel.jpg", category: "Fiction", year: "2012", tags: ["drama"] },
-    { title: "Murder on the Orient Express", author: "Agatha Christie", cover: "assets/images/books/murder-on-the-orient-express.jpg", category: "Fiction", year: "2012", tags: ["crime"] },
-    { title: "Not a Penny More, Not a Penny Less", author: "Jeffrey Archer", cover: "assets/images/books/not-a-penny-more-not-a-penny-less.jpg", category: "Fiction", year: "2011", tags: ["crime"] },
-    { title: "Outliers", author: "Malcolm Gladwell", cover: "assets/images/books/outliers.jpg", category: "Non-Fiction", year: "2015", tags: ["self-devp"] },
-    { title: "Principles: Life and Work", author: "Ray Dalio", cover: "assets/images/books/principles-life-and-work.jpg", category: "Non-Fiction", year: "2020", tags: ["business"] },
-    { title: "Rich Dad Poor Dad", author: "Robert T. Kiyosaki", cover: "assets/images/books/rich-dad-poor-dad.jpg", category: "Non-Fiction", year: "2019", tags: ["finance"] },
-    { title: "Sam Walton: Made in America", author: "Sam Walton", cover: "assets/images/books/sam-walton-made-in-america.jpg", category: "Non-Fiction", year: "2020", tags: ["business"] },
-    { title: "Sherlock Holmes", author: "Arthur Conan Doyle", cover: "assets/images/books/sherlock-holmes.jpg", category: "Fiction", year: "2014", tags: ["detective"] },
-    { title: "Shoe Dog", author: "Phil Knight", cover: "assets/images/books/shoe-dog.jpg", category: "Non-Fiction", year: "2021", tags: ["business"] },
-    { title: "Steve Jobs", author: "Walter Isaacson", cover: "assets/images/books/steve-jobs.jpg", category: "Non-Fiction", year: "2021", tags: ["business"] },
-    { title: "The 38 Letters from J.D. Rockefeller to His Son", author: "John D. Rockefeller", cover: "assets/images/books/the-38-letters-from-jd-rockefeller-to-his-son.jpg", category: "Non-Fiction", year: "2025", tags: ["self-devp"] },
-    { title: "The Art of War", author: "Sun Tzu", cover: "assets/images/books/art-of-war.jpg", category: "Non-Fiction", year: "2018", tags: ["strategy"] },
-    { title: "The Everything Store: Jeff Bezos and the Age of Amazon", author: "Brad Stone", cover: "assets/images/books/the-everything-store.jpg", category: "Non-Fiction", year: "2020", tags: ["business"] },
-    { title: "The Intelligent Investor", author: "Benjamin Graham", cover: "assets/images/books/the-intelligent-investor.jpg", category: "Non-Fiction", year: "2019", tags: ["finance"] },
-    { title: "The Murder of Roger Ackroyd", author: "Agatha Christie", cover: "assets/images/books/the-murder-of-roger-ackroyd.jpg", category: "Fiction", year: "2013", tags: ["crime"] },
-    { title: "The Wright Brothers", author: "David McCullough", cover: "assets/images/books/the-wright-brothers.jpg", category: "Non-Fiction", year: "2016", tags: ["history"] },
-    { title: "Zero to One", author: "Peter Thiel", cover: "assets/images/books/zero-to-one.jpg", category: "Non-Fiction", year: "2016", tags: ["startups"] }
+    {
+        title: "And Then There Were None",
+        author: "Agatha Christie",
+        cover: "assets/images/books/and-then-there-were-none.jpg",
+        category: "Fiction",
+        year: "2013",
+        tags: ["crime"]
+    },
+    {
+        title: "Atomic Habits",
+        author: "James Clear",
+        cover: "assets/images/books/atomic-habits.jpg",
+        category: "Non-Fiction",
+        year: "2024",
+        tags: ["self-devp"]
+    },
+    {
+        title: "Ender's Game",
+        author: "Orson Scott Card",
+        cover: "assets/images/books/enders-game.jpg",
+        category: "Fiction",
+        year: "2025",
+        tags: ["sci-fi"]
+    },
+    {
+        title: "Finance for Non-Finance Managers",
+        author: "Gene Siciliano",
+        cover: "assets/images/books/finance-for-non-finance-managers.jpg",
+        category: "Non-Fiction",
+        year: "2012",
+        tags: ["finance"]
+    },
+    {
+        title: "How to Win Friends and Influence People",
+        author: "Dale Carnegie",
+        cover: "assets/images/books/how-to-win-friends-and-influence-people.jpg",
+        category: "Non-Fiction",
+        year: "2017",
+        tags: ["self-devp"]
+    },
+    {
+        title: "Kane and Abel",
+        author: "Jeffrey Archer",
+        cover: "assets/images/books/kane-and-abel.jpg",
+        category: "Fiction",
+        year: "2012",
+        tags: ["drama"]
+    },
+    {
+        title: "Murder on the Orient Express",
+        author: "Agatha Christie",
+        cover: "assets/images/books/murder-on-the-orient-express.jpg",
+        category: "Fiction",
+        year: "2012",
+        tags: ["crime"]
+    },
+    {
+        title: "Not a Penny More, Not a Penny Less",
+        author: "Jeffrey Archer",
+        cover: "assets/images/books/not-a-penny-more-not-a-penny-less.jpg",
+        category: "Fiction",
+        year: "2011",
+        tags: ["crime"]
+    },
+    {
+        title: "Outliers",
+        author: "Malcolm Gladwell",
+        cover: "assets/images/books/outliers.jpg",
+        category: "Non-Fiction",
+        year: "2015",
+        tags: ["self-devp"]
+    },
+    {
+        title: "Principles: Life and Work",
+        author: "Ray Dalio",
+        cover: "assets/images/books/principles-life-and-work.jpg",
+        category: "Non-Fiction",
+        year: "2020",
+        tags: ["business"]
+    },
+    {
+        title: "Rich Dad Poor Dad",
+        author: "Robert T. Kiyosaki",
+        cover: "assets/images/books/rich-dad-poor-dad.jpg",
+        category: "Non-Fiction",
+        year: "2019",
+        tags: ["finance"]
+    },
+    {
+        title: "Sam Walton: Made in America",
+        author: "Sam Walton",
+        cover: "assets/images/books/sam-walton-made-in-america.jpg",
+        category: "Non-Fiction",
+        year: "2020",
+        tags: ["business"]
+    },
+    {
+        title: "Sherlock Holmes",
+        author: "Arthur Conan Doyle",
+        cover: "assets/images/books/sherlock-holmes.jpg",
+        category: "Fiction",
+        year: "2014",
+        tags: ["detective"]
+    },
+    {
+        title: "Shoe Dog",
+        author: "Phil Knight",
+        cover: "assets/images/books/shoe-dog.jpg",
+        category: "Non-Fiction",
+        year: "2021",
+        tags: ["business"]
+    },
+    {
+        title: "Steve Jobs",
+        author: "Walter Isaacson",
+        cover: "assets/images/books/steve-jobs.jpg",
+        category: "Non-Fiction",
+        year: "2021",
+        tags: ["business"]
+    },
+    {
+        title: "The 38 Letters from J.D. Rockefeller to His Son",
+        author: "John D. Rockefeller",
+        cover: "assets/images/books/the-38-letters-from-jd-rockefeller-to-his-son.jpg",
+        category: "Non-Fiction",
+        year: "2025",
+        tags: ["self-devp"]
+    },
+    {
+        title: "The Art of War",
+        author: "Sun Tzu",
+        cover: "assets/images/books/art-of-war.jpg",
+        category: "Non-Fiction",
+        year: "2018",
+        tags: ["strategy"]
+    },
+    {
+        title: "The Everything Store: Jeff Bezos and the Age of Amazon",
+        author: "Brad Stone",
+        cover: "assets/images/books/the-everything-store.jpg",
+        category: "Non-Fiction",
+        year: "2020",
+        tags: ["business"]
+    },
+    {
+        title: "The Intelligent Investor",
+        author: "Benjamin Graham",
+        cover: "assets/images/books/the-intelligent-investor.jpg",
+        category: "Non-Fiction",
+        year: "2019",
+        tags: ["finance"]
+    },
+    {
+        title: "The Murder of Roger Ackroyd",
+        author: "Agatha Christie",
+        cover: "assets/images/books/the-murder-of-roger-ackroyd.jpg",
+        category: "Fiction",
+        year: "2013",
+        tags: ["crime"]
+    },
+    {
+        title: "The Wright Brothers",
+        author: "David McCullough",
+        cover: "assets/images/books/the-wright-brothers.jpg",
+        category: "Non-Fiction",
+        year: "2016",
+        tags: ["history"]
+    },
+    {
+        title: "Zero to One",
+        author: "Peter Thiel",
+        cover: "assets/images/books/zero-to-one.jpg",
+        category: "Non-Fiction",
+        year: "2016",
+        tags: ["startups"]
+    }
 ];
 
+// ---- State ----
 let activeCategory = "All";
+
+// ---- Categories ----
 const categories = ["All", "Fiction", "Non-Fiction"];
 
+// ---- Build filter buttons ----
 function buildFilters() {
     const row = document.getElementById("filterRow");
+
     categories.forEach(cat => {
         const btn = document.createElement("button");
         btn.className = "filter-btn" + (cat === "All" ? " active" : "");
@@ -709,31 +873,55 @@ function updateFilters() {
     });
 }
 
+// ---- Render book cards ----
 function renderBooks() {
     const grid = document.getElementById("booksGrid");
     grid.innerHTML = "";
-    const filtered = books.filter(b => activeCategory === "All" || b.category === activeCategory);
+
+    const filtered = books.filter(b => {
+        return activeCategory === "All" || b.category === activeCategory;
+    });
+
     document.getElementById("visibleCount").textContent = filtered.length;
+
     if (filtered.length === 0) {
-        grid.innerHTML = `<div class="empty-state"><div class="empty-icon">📚</div><p>No books match these filters</p></div>`;
+        grid.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon">📚</div>
+                <p>No books match these filters</p>
+            </div>`;
         return;
     }
+
     filtered.forEach((book, i) => {
         const card = document.createElement("div");
         card.className = "book-card";
         card.style.animationDelay = `${i * 0.06}s`;
+
         const coverHTML = book.cover
             ? `<img src="${book.cover}" alt="${book.title}" loading="lazy">`
-            : `<div class="book-cover-placeholder"><div class="placeholder-icon">📖</div><div class="placeholder-title">${book.title}</div></div>`;
+            : `<div class="book-cover-placeholder">
+                    <div class="placeholder-icon">📖</div>
+                    <div class="placeholder-title">${book.title}</div>
+               </div>`;
+
         let tagsHTML = "";
         if (book.year) tagsHTML += `<span class="book-tag year-tag">${book.year}</span>`;
         if (book.category) tagsHTML += `<span class="book-tag">${book.category}</span>`;
         if (book.tags) book.tags.forEach(t => { tagsHTML += `<span class="book-tag">${t}</span>`; });
-        card.innerHTML = `<div class="book-cover-wrap">${coverHTML}</div><div class="book-info"><div class="book-title">${book.title}</div><div class="book-tags">${tagsHTML}</div></div>`;
+
+        card.innerHTML = `
+            <div class="book-cover-wrap">${coverHTML}</div>
+            <div class="book-info">
+                <div class="book-title">${book.title}</div>
+                <div class="book-tags">${tagsHTML}</div>
+            </div>`;
+
         grid.appendChild(card);
     });
 }
 
+// ---- Init ----
 buildFilters();
 renderBooks();
 </script>
