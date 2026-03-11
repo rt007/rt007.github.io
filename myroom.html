@@ -18,8 +18,9 @@
     html { scroll-behavior: smooth; }
     body { width:100%; min-height:100vh; background:var(--cream); font-family:'DM Sans',sans-serif; color:var(--text); display:flex; flex-direction:column; }
 
-    /* NAVBAR */
-    .site-nav { position:fixed; top:0; left:0; right:0; z-index:200; padding:16px 24px; }
+    /* UNIFIED HEADER */
+    .site-header { background:var(--hero-bg); border-bottom:1px solid var(--border); padding:20px 32px 40px; flex-shrink:0; }
+    .site-nav { padding:0; margin-bottom:32px; }
     .site-nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 24px; border-radius:9999px; background:rgba(255,255,255,0.45); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.3); box-shadow:0 2px 16px rgba(42,37,32,0.08); }
     .site-nav .brand { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--text); text-decoration:none; letter-spacing:-0.01em; white-space:nowrap; transition:color 0.2s; }
     .site-nav .brand:hover { color:var(--accent); }
@@ -27,9 +28,6 @@
     .nav-links a { text-decoration:none; color:var(--text); font-family:'DM Sans',sans-serif; font-size:0.84rem; font-weight:500; padding:6px 14px; border-radius:100px; transition:color 0.2s,background 0.2s; letter-spacing:0.01em; }
     .nav-links a:hover { background:rgba(45,41,38,0.07); }
     .nav-links a.active { background:var(--nav-bg); color:#fff; font-weight:500; }
-
-    /* HERO */
-    .hero-banner { background:var(--hero-bg); border-bottom:1px solid var(--border); padding:100px 32px 40px; flex-shrink:0; }
     .hero-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:36px; }
     .hero-photo { flex-shrink:0; }
     .hero-photo img { width:100px; height:100px; border-radius:50%; object-fit:cover; border:3px solid var(--card-bg); box-shadow:0 4px 16px var(--shadow); }
@@ -101,7 +99,7 @@
     @media(max-width:640px){
       .site-nav{padding:12px 16px}
       .site-nav-inner{padding:8px 16px}
-      .hero-banner{padding:90px 18px 32px}
+      .site-header{padding:16px 18px 28px}
       .site-footer{padding:36px 18px 28px}
       .nav-links a{padding:6px 10px;font-size:0.78rem}
       .hero-text h1{font-size:1.6rem}
@@ -113,7 +111,8 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- UNIFIED HEADER -->
+  <header class="site-header">
   <nav class="site-nav">
     <div class="site-nav-inner">
       <a href="https://rt007.github.io/index.html" class="brand">Romal's Website</a>
@@ -126,9 +125,7 @@
     </div>
   </nav>
 
-  <!-- HERO BANNER -->
-  <div class="hero-banner">
-    <div class="hero-inner">
+  <div class="hero-inner">
       <div class="hero-photo">
         <img src="assets/images/profile.png" alt="Romal">
       </div>
@@ -151,7 +148,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </header>
 
   <!-- ROOM SCENE -->
   <div class="room-scene">
