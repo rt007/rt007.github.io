@@ -1,8 +1,6 @@
 /**
  * chatbot.js — Romal's AI Assistant widget
  * Drop into any page. Requires chatbot.css.
- *
- * Config: set CHATBOT_API_URL below to your deployed Vercel function URL.
  */
 
 (function () {
@@ -10,7 +8,7 @@
 
   // ── Configuration ──────────────────────────────────────────────────────────
   const CONFIG = {
-    API_URL: "https://YOUR-PROJECT.vercel.app/api/chat", // ← update after deploying
+    API_URL: "https://chatbot-backend-weld.vercel.app/api/chat", //
     BOT_NAME: "Romal's AI Assistant",
     BOT_INITIAL: "R",   // avatar initials
     USER_INITIAL: "You",
