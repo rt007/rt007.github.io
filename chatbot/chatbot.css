@@ -31,9 +31,8 @@
   bottom: 28px;
   right: 28px;
   z-index: 99998;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  height: 50px;
+  border-radius: 25px;
   background: linear-gradient(135deg, var(--cb-terracotta), var(--cb-terra-dark));
   border: none;
   cursor: pointer;
@@ -41,43 +40,61 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease;
+  gap: 8px;
+  /* Start expanded with label */
+  max-width: 230px;
+  padding: 0 18px 0 14px;
+  overflow: hidden;
+  white-space: nowrap;
   outline: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              border-radius 0.4s ease;
 }
 #cb-bubble:hover {
-  transform: scale(1.08);
+  transform: scale(1.06);
   box-shadow: 0 6px 28px rgba(196, 98, 45, 0.55), 0 3px 12px rgba(44,26,14,0.18);
 }
 #cb-bubble:active { transform: scale(0.96); }
 
-#cb-bubble svg { pointer-events: none; transition: opacity 0.2s, transform 0.2s; }
+/* Shrunk to icon-only (after 8s or scroll, and when open) */
+#cb-bubble.cb-icon-only,
+#cb-bubble.is-open {
+  max-width: 50px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Label next to icon */
+#cb-bubble-label {
+  font-family: var(--cb-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.1px;
+  flex-shrink: 0;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+#cb-bubble.cb-icon-only #cb-bubble-label,
+#cb-bubble.is-open #cb-bubble-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Chat/close icon swap */
+#cb-bubble svg { pointer-events: none; transition: opacity 0.2s, transform 0.2s; flex-shrink: 0; }
 #cb-bubble .cb-icon-chat  { opacity: 1;  transform: scale(1) rotate(0deg); }
 #cb-bubble .cb-icon-close { opacity: 0;  transform: scale(0.6) rotate(-45deg); position: absolute; }
-
 #cb-bubble.is-open .cb-icon-chat  { opacity: 0;  transform: scale(0.6) rotate(45deg); }
 #cb-bubble.is-open .cb-icon-close { opacity: 1;  transform: scale(1) rotate(0deg); }
-
-/* Pulse ring on idle */
-#cb-bubble::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid var(--cb-terra-light);
-  opacity: 0;
-  animation: cb-pulse 3s ease-in-out 2s infinite;
-}
-@keyframes cb-pulse {
-  0%, 100% { opacity: 0; transform: scale(1); }
-  50%       { opacity: 0.6; transform: scale(1.18); }
-}
-#cb-bubble.is-open::after { animation: none; }
 
 /* ── Chat Window ───────────────────────────────────────────── */
 #cb-window {
   position: fixed;
-  bottom: 100px;
+  bottom: 90px;
   right: 28px;
   z-index: 99999;
   width: var(--cb-w);
@@ -109,7 +126,7 @@
 /* ── Header ────────────────────────────────────────────────── */
 #cb-header {
   background: linear-gradient(135deg, var(--cb-terracotta) 0%, var(--cb-terra-dark) 100%);
-  padding: 16px 20px;
+  padding: 14px 14px 14px 18px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -126,8 +143,8 @@
   background: rgba(255,255,255,0.06);
 }
 #cb-avatar {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(255,255,255,0.18);
   display: flex;
@@ -135,7 +152,7 @@
   justify-content: center;
   flex-shrink: 0;
   font-family: var(--cb-font-display);
-  font-size: 17px;
+  font-size: 16px;
   color: var(--cb-white);
   letter-spacing: -0.5px;
 }
@@ -148,7 +165,7 @@
   letter-spacing: 0.1px;
 }
 #cb-header-status {
-  font-size: 11.5px;
+  font-size: 11px;
   color: rgba(255,255,255,0.75);
   display: flex;
   align-items: center;
@@ -162,6 +179,29 @@
   background: #8FE0A0;
   flex-shrink: 0;
 }
+
+/* Reset button */
+#cb-reset {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: background 0.18s, transform 0.35s ease;
+}
+#cb-reset:hover {
+  background: rgba(255,255,255,0.26);
+  transform: rotate(35deg);
+}
+#cb-reset:active { transform: rotate(180deg) scale(0.9); }
+#cb-reset svg { pointer-events: none; }
 
 /* ── Messages Area ─────────────────────────────────────────── */
 #cb-messages {
@@ -251,13 +291,32 @@
   border-bottom-right-radius: 4px;
 }
 
+/* CV button inside bot messages */
+.cb-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, var(--cb-terracotta), var(--cb-terra-dark));
+  color: white !important;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: var(--cb-font-body);
+  text-decoration: none !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(196, 98, 45, 0.3);
+}
+.cb-cv-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(196, 98, 45, 0.45);
+  color: white !important;
+}
+
 /* Typing indicator */
-.cb-typing .cb-msg-bubble {
-  padding: 12px 14px;
-}
-.cb-dots {
-  display: flex; gap: 4px; align-items: center;
-}
+.cb-typing .cb-msg-bubble { padding: 12px 14px; }
+.cb-dots { display: flex; gap: 4px; align-items: center; }
 .cb-dots span {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--cb-ink-muted);
@@ -318,16 +377,6 @@
 #cb-send:active { transform: scale(0.94); }
 #cb-send:disabled { opacity: 0.45; cursor: default; transform: none; }
 
-/* ── Branding footer ───────────────────────────────────────── */
-#cb-footer {
-  text-align: center;
-  font-size: 10.5px;
-  color: var(--cb-ink-muted);
-  padding: 0 0 10px;
-  letter-spacing: 0.2px;
-  flex-shrink: 0;
-}
-
 /* ── Error ─────────────────────────────────────────────────── */
 .cb-error .cb-msg-bubble {
   background: #FEF0EC;
@@ -338,6 +387,6 @@
 /* ── Mobile ────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   :root { --cb-w: calc(100vw - 24px); }
-  #cb-window { right: 12px; bottom: 90px; }
+  #cb-window { right: 12px; bottom: 82px; }
   #cb-bubble { right: 18px; bottom: 18px; }
 }
