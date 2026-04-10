@@ -8,7 +8,7 @@
 
   // ── Configuration ──────────────────────────────────────────────────────────
   const CONFIG = {
-    API_URL: "https://chatbot-backend-bq3a.vercel.app/api/chat",
+    API_URL: "https://chatbot-backend-weld.vercel.app/api/chat",
     BOT_NAME: "Romal's AI Assistant",
     BOT_INITIAL: "R",
     USER_INITIAL: "You",
@@ -16,7 +16,7 @@
     // CV-related keywords that trigger the View CV button
     CV_KEYWORDS: ["cv", "curriculum vitae", "resume", "résumé", "download cv", "view cv", "provide", "share cv"],
     SUGGESTIONS: [
-      "Tell me about his current role at Insight Research Centre.",
+      "Tell me about his current role at Insight Research Centre",
       "What recent projects has he worked on?",
       "Provide me his CV!",
     ],
@@ -51,7 +51,7 @@
         <svg class="cb-icon-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
-        <svg class="cb-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+        <svg class="cb-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </span>

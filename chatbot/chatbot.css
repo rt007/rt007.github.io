@@ -37,21 +37,17 @@
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(196, 98, 45, 0.45), 0 2px 8px rgba(44,26,14,0.15);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
-  /* Start expanded with label */
-  max-width: 230px;
   padding: 0 18px 0 14px;
-  overflow: hidden;
-  white-space: nowrap;
   outline: none;
+  /* NO overflow:hidden — that was clipping the icons */
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.25s ease,
-              max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              border-radius 0.4s ease;
+              border-radius 0.4s ease,
+              padding 0.45s ease;
 }
 #cb-bubble:hover {
   transform: scale(1.06);
@@ -59,47 +55,58 @@
 }
 #cb-bubble:active { transform: scale(0.96); }
 
-/* Shrunk to icon-only (after 8s or scroll, and when open) */
-#cb-bubble.cb-icon-only,
-#cb-bubble.is-open {
-  max-width: 50px;
-  padding: 0;
-  border-radius: 50%;
+/* Icon wrapper — always 22x22, never clipped */
+#cb-bubble-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Label next to icon */
+/* SVG icons sit on top of each other inside the wrapper */
+#cb-bubble-icon svg {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0;
+  width: 22px; height: 22px;
+  transition: opacity 0.2s ease;
+}
+#cb-bubble .cb-icon-chat  { opacity: 1; }
+#cb-bubble .cb-icon-close { opacity: 0; }
+#cb-bubble.is-open .cb-icon-chat  { opacity: 0; }
+#cb-bubble.is-open .cb-icon-close { opacity: 1; }
+
+/* Label — fades and collapses via width */
 #cb-bubble-label {
   font-family: var(--cb-font-body);
   font-size: 13px;
   font-weight: 500;
   color: white;
   letter-spacing: 0.1px;
-  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 160px;
   opacity: 1;
-  transition: opacity 0.25s ease;
+  transition: max-width 0.45s ease, opacity 0.3s ease, margin 0.45s ease;
 }
 #cb-bubble.cb-icon-only #cb-bubble-label,
 #cb-bubble.is-open #cb-bubble-label {
+  max-width: 0;
   opacity: 0;
+  margin: 0;
   pointer-events: none;
 }
 
-/* Icon wrapper */
-#cb-bubble-icon {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
+/* Icon-only: tighten padding and make circular */
+#cb-bubble.cb-icon-only,
+#cb-bubble.is-open {
+  padding: 0 14px;
+  border-radius: 50%;
   justify-content: center;
 }
-
-/* Chat/close icon swap — simple display toggle, no absolute positioning */
-#cb-bubble svg { pointer-events: none; display: block; }
-#cb-bubble .cb-icon-chat  { display: block; }
-#cb-bubble .cb-icon-close { display: none;  }
-#cb-bubble.is-open .cb-icon-chat  { display: none;  }
-#cb-bubble.is-open .cb-icon-close { display: block; }
 
 /* ── Chat Window ───────────────────────────────────────────── */
 #cb-window {
