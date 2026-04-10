@@ -8,7 +8,7 @@
 
   // ── Configuration ──────────────────────────────────────────────────────────
   const CONFIG = {
-    API_URL: "https://chatbot-backend-bq3a.vercel.app/api/chat",
+    API_URL: "https://chatbot-backend-weld.vercel.app/api/chat",
     BOT_NAME: "Romal's AI Assistant",
     BOT_INITIAL: "R",
     USER_INITIAL: "You",
@@ -47,12 +47,14 @@
 
     // ── Bubble ──
     const bubble = el("button", { id: "cb-bubble", "aria-label": "Open chat" }, `
-      <svg class="cb-icon-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
-      <svg class="cb-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
+      <span id="cb-bubble-icon">
+        <svg class="cb-icon-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <svg class="cb-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </span>
       <span id="cb-bubble-label">Chat about my work</span>
     `);
 

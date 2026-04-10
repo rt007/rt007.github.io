@@ -84,9 +84,20 @@
   pointer-events: none;
 }
 
-/* Chat/close icon swap */
-#cb-bubble svg { pointer-events: none; transition: opacity 0.2s, transform 0.2s; flex-shrink: 0; }
-#cb-bubble .cb-icon-chat  { opacity: 1;  transform: scale(1) rotate(0deg); }
+/* Icon wrapper — fixed size so the button always has something to centre on */
+#cb-bubble-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chat/close icon swap — both sit on top of each other inside the wrapper */
+#cb-bubble svg { pointer-events: none; transition: opacity 0.2s, transform 0.2s; }
+#cb-bubble .cb-icon-chat  { opacity: 1;  transform: scale(1) rotate(0deg); position: absolute; }
 #cb-bubble .cb-icon-close { opacity: 0;  transform: scale(0.6) rotate(-45deg); position: absolute; }
 #cb-bubble.is-open .cb-icon-chat  { opacity: 0;  transform: scale(0.6) rotate(45deg); }
 #cb-bubble.is-open .cb-icon-close { opacity: 1;  transform: scale(1) rotate(0deg); }
