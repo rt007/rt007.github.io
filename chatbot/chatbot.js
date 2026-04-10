@@ -16,7 +16,7 @@
     // CV-related keywords that trigger the View CV button
     CV_KEYWORDS: ["cv", "curriculum vitae", "resume", "résumé", "download cv", "view cv", "provide", "share cv"],
     SUGGESTIONS: [
-      "Tell me about his current role at Insight Research Centre",
+      "Tell me about his current role at Insight Research Centre.",
       "What recent projects has he worked on?",
       "Provide me his CV!",
     ],
