@@ -8,7 +8,7 @@
 
   // ── Configuration ──────────────────────────────────────────────────────────
   const CONFIG = {
-    API_URL: "https://chatbot-backend-weld.vercel.app/api/chat",
+    API_URL: "https://chatbot-backend-bq3a.vercel.app/api/chat",
     BOT_NAME: "Romal's AI Assistant",
     BOT_INITIAL: "R",
     USER_INITIAL: "You",
