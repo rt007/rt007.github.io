@@ -124,10 +124,10 @@
     // ── Shrink bubble after 8 seconds ──
     setTimeout(shrinkBubble, 8000);
 
-    // ── Shrink bubble on scroll ──
+    /* ── Shrink bubble on scroll ──
     let scrollHandler = () => { shrinkBubble(); window.removeEventListener("scroll", scrollHandler); };
     window.addEventListener("scroll", scrollHandler, { passive: true });
-
+    */
     // ── Initial messages ──
     appendBotMessage(CONFIG.WELCOME_MESSAGE);
     renderSuggestions();
