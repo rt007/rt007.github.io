@@ -1,29 +1,4 @@
-<svg width="100%" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
-  
-
-  <!-- Large preview -->
-  <g transform="translate(226,40)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect width="228" height="228" rx="0" fill="#c7560a" style="fill:rgb(199, 86, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <text x="114" y="167" font-family="Georgia, serif" font-size="148" font-weight="700" fill="white" text-anchor="middle" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, serif;font-size:148px;font-weight:700;text-anchor:middle;dominant-baseline:auto">R</text>
-  </g>
-  <text x="340" y="302" style="fill:rgb(61, 61, 58);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Anthropic Sans, sans-serif;font-size:13px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Favicon preview (large)</text>
-
-  <!-- Small sizes simulation -->
-  <g transform="translate(30,100)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect width="64" height="64" rx="0" fill="#c7560a" style="fill:rgb(199, 86, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <text x="32" y="46" font-family="Georgia, serif" font-size="42" font-weight="700" fill="white" text-anchor="middle" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, serif;font-size:42px;font-weight:700;text-anchor:middle;dominant-baseline:auto">R</text>
-  </g>
-  <text x="62" y="178" style="fill:rgb(61, 61, 58);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Anthropic Sans, sans-serif;font-size:13px;font-weight:400;text-anchor:middle;dominant-baseline:auto">64px</text>
-
-  <g transform="translate(120,116)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect width="32" height="32" rx="0" fill="#c7560a" style="fill:rgb(199, 86, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <text x="16" y="23" font-family="Georgia, serif" font-size="21" font-weight="700" fill="white" text-anchor="middle" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, serif;font-size:21px;font-weight:700;text-anchor:middle;dominant-baseline:auto">R</text>
-  </g>
-  <text x="136" y="162" style="fill:rgb(61, 61, 58);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Anthropic Sans, sans-serif;font-size:13px;font-weight:400;text-anchor:middle;dominant-baseline:auto">32px</text>
-
-  <g transform="translate(190,124)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
-    <rect width="16" height="16" rx="0" fill="#c7560a" style="fill:rgb(199, 86, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-    <text x="8" y="12" font-family="Georgia, serif" font-size="11" font-weight="700" fill="white" text-anchor="middle" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, serif;font-size:11px;font-weight:700;text-anchor:middle;dominant-baseline:auto">R</text>
-  </g>
-  <text x="198" y="154" style="fill:rgb(61, 61, 58);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Anthropic Sans, sans-serif;font-size:13px;font-weight:400;text-anchor:middle;dominant-baseline:auto">16px</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" fill="#c7560a"/>
+  <text x="50" y="73" font-family="Georgia, serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">R</text>
 </svg>
