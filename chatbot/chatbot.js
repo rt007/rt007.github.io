@@ -21,7 +21,7 @@
       "Provide me his CV!",
     ],
     WELCOME_MESSAGE:
-      "Hi there! I'm Romal's AI assistant. I can tell you about his research, projects, skills, and experience. What are you curious about?",
+      "Hi there! I'm Romal's AI twin. I can tell you about his research, projects, skills, and experience. What are you curious about?",
   };
 
   // ── State ──────────────────────────────────────────────────────────────────
