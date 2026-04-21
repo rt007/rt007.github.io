@@ -1,0 +1,407 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-fixed-dim": "#ffb59f",
+          "surface-container-highest": "#ebe1d9",
+          "surface-tint": "#9f4125",
+          "tertiary": "#5f5b55",
+          "primary": "#9b3f22",
+          "on-secondary": "#ffffff",
+          "inverse-primary": "#ffb59f",
+          "error": "#ba1a1a",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-fixed-dim": "#ccc5be",
+          "on-primary-fixed": "#3a0a00",
+          "surface-container-high": "#f1e6de",
+          "secondary": "#635d5a",
+          "on-surface-variant": "#56423d",
+          "surface-variant": "#ebe1d9",
+          "on-background": "#1f1b16",
+          "error-container": "#ffdad6",
+          "on-secondary-container": "#67625e",
+          "surface-container-low": "#fcf2e9",
+          "on-primary-container": "#fffbff",
+          "on-surface": "#1f1b16",
+          "secondary-container": "#e6ded9",
+          "tertiary-container": "#78746d",
+          "surface-container": "#f7ece4",
+          "background": "#fff8f4",
+          "secondary-fixed-dim": "#cdc5c0",
+          "outline": "#89726b",
+          "on-secondary-fixed": "#1e1b18",
+          "on-secondary-fixed-variant": "#4b4642",
+          "inverse-on-surface": "#f9efe7",
+          "primary-fixed": "#ffdbd1",
+          "on-error": "#ffffff",
+          "inverse-surface": "#352f2a",
+          "on-primary-fixed-variant": "#7f2a0f",
+          "on-tertiary-fixed": "#1e1b17",
+          "surface": "#fff8f4",
+          "surface-bright": "#fff8f4",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-container": "#fffbff",
+          "surface-dim": "#e2d8d0",
+          "on-tertiary-fixed-variant": "#4a4641",
+          "on-error-container": "#93000a",
+          "on-primary": "#ffffff",
+          "secondary-fixed": "#e9e1dc",
+          "outline-variant": "#ddc0b9",
+          "primary-container": "#bb5638",
+          "tertiary-fixed": "#e8e1d9"
+        },
+        fontFamily: {
+          "headline": ["Newsreader"],
+          "body": ["Manrope"],
+          "label": ["Inter"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  body {
+    font-family: 'Manrope', sans-serif;
+  }
+  .newsreader-italic {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+  }
+  .newsreader {
+    font-family: 'Newsreader', serif;
+  }
+
+  /* Carousel styles */
+  .carousel-item {
+    display: none;
+  }
+  .carousel-item.active {
+    display: block;
+    animation: fadeIn 0.8s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Progress bar pagination */
+  .pagination-bars {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .pagination-bar {
+    height: 2px;
+    width: 40px;
+    background-color: #ddc0b9;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .pagination-bar.active {
+    background-color: #ddc0b9;
+  }
+  .pagination-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #9b3f22;
+    border-radius: 2px;
+    transition: width linear;
+  }
+  .pagination-bar.active .pagination-bar-fill {
+    width: 100%;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed-dim">
+<main class="pt-32 pb-24">
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-8 mb-32">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+      <div class="md:col-span-7">
+        <h1 class="font-headline text-5xl md:text-7xl text-on-surface mb-8 leading-tight">
+          Hello, I'm <span class="italic">Romal</span>—a tech researcher with an IT and business management background.
+        </h1>
+        <p class="font-body text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+          Based in Dublin, I explore the intersection of emerging technologies and real-world systems—from digital twins and smart cities to AI-driven tools that make complex information tangible and useful.
+        </p>
+      </div>
+      <div class="md:col-span-5">
+        <div class="aspect-[4/5] bg-surface-container-low overflow-hidden rounded-lg shadow-sm group">
+          <img
+            alt="Portrait of Romal Thakkar, tech researcher based in Dublin"
+            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-100"
+            src="my_dpEdited.PNG"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Narrative Section -->
+  <section class="bg-surface-container-low py-32">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+        <div class="md:col-span-4">
+          <h2 class="font-headline text-3xl text-on-surface mb-6">Professional Background</h2>
+          <div class="space-y-8">
+            <div class="border-l border-outline-variant pl-6 py-2">
+              <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant">2023 — Present</span>
+              <h3 class="font-body font-bold text-on-surface mt-1">[Your Current Role]</h3>
+              <p class="font-body text-sm text-on-surface-variant">[Organisation]</p>
+            </div>
+            <div class="border-l border-outline-variant pl-6 py-2">
+              <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant">[Year] — [Year]</span>
+              <h3 class="font-body font-bold text-on-surface mt-1">[Previous Role]</h3>
+              <p class="font-body text-sm text-on-surface-variant">[Organisation]</p>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-8">
+          <div class="max-w-2xl">
+            <div class="font-body text-on-surface-variant space-y-6 leading-relaxed">
+              <p>
+                My interest in technology has always been grounded in a practical question: how do systems work, and how can they work better? That curiosity led me from an IT and business management foundation into the world of research—exploring how digital infrastructure, data, and emerging technologies intersect with the way cities and organisations operate.
+              </p>
+              <p>
+                Today, my work sits at the junction of digital twin technology, smart city systems, and AI. I collaborate with institutions and public bodies to translate complex technical concepts into research that has real-world relevance—work that bridges the gap between what's technically possible and what's practically useful.
+              </p>
+              <p>
+                Outside of research, I build tools and projects that reflect the same instinct: taking something complex and making it accessible. Whether that's an AI-powered app, a 360° digital environment, or a podcast series on emerging tech, I'm driven by the idea that technology should be something people can understand, engage with, and benefit from.
+              </p>
+            </div>
+            <div class="mt-12 flex gap-4">
+              <a class="inline-block bg-[#C45D3E] text-white px-8 py-3 rounded-lg font-headline text-lg hover:bg-opacity-90 transition-all duration-300 shadow-sm" href="https://linkedin.com/in/romalthakkar">LINKEDIN&nbsp;⟶</a>
+              <a class="inline-block bg-[#C45D3E] text-white px-8 py-3 rounded-lg font-headline text-lg hover:bg-opacity-90 transition-all duration-300 shadow-sm" href="http://romalthakkar.cv/">MY RESUME&nbsp;⟶</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Carousel Section -->
+  <section class="max-w-7xl mx-auto px-8 py-32 relative overflow-hidden">
+    <div class="relative max-w-4xl mx-auto" id="testimonial-carousel">
+
+      <!-- Testimonial 1 -->
+      <div class="carousel-item active">
+        <div class="flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-primary mb-8 text-4xl opacity-50">format_quote</span>
+          <blockquote class="font-headline text-2xl md:text-3xl text-on-surface leading-relaxed italic mb-10">
+            "[Testimonial 1 — placeholder text. Replace with the actual testimonial you'd like to feature here.]"
+          </blockquote>
+          <div class="flex flex-col items-center">
+            <cite class="font-body font-bold text-on-surface not-italic">[Name 1]</cite>
+            <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant mt-1">[Title, Organisation 1]</span>
+            <!-- Pagination bars -->
+            <div class="pagination-bars" id="pagination-bars">
+              <div class="pagination-bar active" onclick="goToSlide(0)"><div class="pagination-bar-fill" id="bar-fill-0"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(1)"><div class="pagination-bar-fill" id="bar-fill-1"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(2)"><div class="pagination-bar-fill" id="bar-fill-2"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(3)"><div class="pagination-bar-fill" id="bar-fill-3"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(4)"><div class="pagination-bar-fill" id="bar-fill-4"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="carousel-item">
+        <div class="flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-primary mb-8 text-4xl opacity-50">format_quote</span>
+          <blockquote class="font-headline text-2xl md:text-3xl text-on-surface leading-relaxed italic mb-10">
+            "[Testimonial 2 — placeholder text. Replace with the actual testimonial you'd like to feature here.]"
+          </blockquote>
+          <div class="flex flex-col items-center">
+            <cite class="font-body font-bold text-on-surface not-italic">[Name 2]</cite>
+            <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant mt-1">[Title, Organisation 2]</span>
+            <div class="pagination-bars">
+              <div class="pagination-bar" onclick="goToSlide(0)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar active" onclick="goToSlide(1)"><div class="pagination-bar-fill" id="bar-fill-1b"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(2)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(3)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(4)"><div class="pagination-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="carousel-item">
+        <div class="flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-primary mb-8 text-4xl opacity-50">format_quote</span>
+          <blockquote class="font-headline text-2xl md:text-3xl text-on-surface leading-relaxed italic mb-10">
+            "[Testimonial 3 — placeholder text. Replace with the actual testimonial you'd like to feature here.]"
+          </blockquote>
+          <div class="flex flex-col items-center">
+            <cite class="font-body font-bold text-on-surface not-italic">[Name 3]</cite>
+            <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant mt-1">[Title, Organisation 3]</span>
+            <div class="pagination-bars">
+              <div class="pagination-bar" onclick="goToSlide(0)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(1)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar active" onclick="goToSlide(2)"><div class="pagination-bar-fill" id="bar-fill-2b"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(3)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(4)"><div class="pagination-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 4 -->
+      <div class="carousel-item">
+        <div class="flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-primary mb-8 text-4xl opacity-50">format_quote</span>
+          <blockquote class="font-headline text-2xl md:text-3xl text-on-surface leading-relaxed italic mb-10">
+            "[Testimonial 4 — placeholder text. Replace with the actual testimonial you'd like to feature here.]"
+          </blockquote>
+          <div class="flex flex-col items-center">
+            <cite class="font-body font-bold text-on-surface not-italic">[Name 4]</cite>
+            <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant mt-1">[Title, Organisation 4]</span>
+            <div class="pagination-bars">
+              <div class="pagination-bar" onclick="goToSlide(0)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(1)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(2)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar active" onclick="goToSlide(3)"><div class="pagination-bar-fill" id="bar-fill-3b"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(4)"><div class="pagination-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 5 -->
+      <div class="carousel-item">
+        <div class="flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-primary mb-8 text-4xl opacity-50">format_quote</span>
+          <blockquote class="font-headline text-2xl md:text-3xl text-on-surface leading-relaxed italic mb-10">
+            "[Testimonial 5 — placeholder text. Replace with the actual testimonial you'd like to feature here.]"
+          </blockquote>
+          <div class="flex flex-col items-center">
+            <cite class="font-body font-bold text-on-surface not-italic">[Name 5]</cite>
+            <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant mt-1">[Title, Organisation 5]</span>
+            <div class="pagination-bars">
+              <div class="pagination-bar" onclick="goToSlide(0)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(1)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(2)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar" onclick="goToSlide(3)"><div class="pagination-bar-fill"></div></div>
+              <div class="pagination-bar active" onclick="goToSlide(4)"><div class="pagination-bar-fill" id="bar-fill-4b"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Controls -->
+      <button aria-label="Previous testimonial" class="absolute left-0 md:-left-20 top-1/2 -translate-y-1/2 p-2 text-on-surface-variant hover:text-primary transition-colors group" onclick="prevSlide()">
+        <span class="material-symbols-outlined text-4xl font-light">chevron_left</span>
+      </button>
+      <button aria-label="Next testimonial" class="absolute right-0 md:-right-20 top-1/2 -translate-y-1/2 p-2 text-on-surface-variant hover:text-primary transition-colors group" onclick="nextSlide()">
+        <span class="material-symbols-outlined text-4xl font-light">chevron_right</span>
+      </button>
+    </div>
+  </section>
+
+</main>
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-item');
+  const totalSlides = slides.length;
+  const SLIDE_DURATION = 20000; // 20 seconds
+  let slideInterval;
+  let fillAnimationFrame;
+  let fillStartTime;
+
+  // All pagination bar sets (one per slide)
+  // Each slide has its own set of bars; we control fill via JS on the active bar of the current slide
+  // We collect all "bar-N" active fills dynamically from the current active slide
+  function getActiveFill() {
+    // Find the active slide's active bar fill
+    const activeSlide = slides[currentSlide];
+    const activePaginationBar = activeSlide.querySelector('.pagination-bar.active .pagination-bar-fill');
+    return activePaginationBar;
+  }
+
+  function updatePaginationBars(index) {
+    slides.forEach((slide, i) => {
+      const bars = slide.querySelectorAll('.pagination-bar');
+      const fills = slide.querySelectorAll('.pagination-bar-fill');
+      bars.forEach((bar, j) => {
+        bar.classList.toggle('active', j === index);
+      });
+      fills.forEach((fill, j) => {
+        fill.style.transition = 'none';
+        fill.style.width = j < index ? '100%' : '0%';
+      });
+    });
+  }
+
+  function startFillAnimation() {
+    cancelAnimationFrame(fillAnimationFrame);
+    fillStartTime = null;
+
+    const fill = getActiveFill();
+    if (!fill) return;
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        fill.style.transition = `width ${SLIDE_DURATION}ms linear`;
+        fill.style.width = '100%';
+      });
+    });
+  }
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+    currentSlide = index;
+    updatePaginationBars(index);
+    startFillAnimation();
+  }
+
+  function nextSlide() {
+    let next = (currentSlide + 1) % totalSlides;
+    showSlide(next);
+    resetTimer();
+  }
+
+  function prevSlide() {
+    let prev = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(prev);
+    resetTimer();
+  }
+
+  function goToSlide(index) {
+    showSlide(index);
+    resetTimer();
+  }
+
+  function startTimer() {
+    slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+  }
+
+  function resetTimer() {
+    clearInterval(slideInterval);
+    startTimer();
+  }
+
+  // Initialize
+  showSlide(0);
+  startTimer();
+</script>
+</body></html>
