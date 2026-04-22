@@ -1,11 +1,11 @@
 <!DOCTYPE html><html class="light" lang="en"><head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Romal's Website</title>
+<link rel="icon" type="image/svg+xml" href="../assets/images/website-favicon-R.svg">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="../assets/images/website-favicon-R.svg">
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
@@ -129,7 +129,7 @@
   }
 
   /* ── NAV (from index.html) ── */
-  .site-header { background:#ece5dd; border-bottom:1px solid #d9d0c7; padding:20px 32px 40px; }
+  .site-header { background:#ece5dd; border-bottom:1px solid #d9d0c7; padding:20px 32px 20px; }
   .site-nav { margin-bottom:32px; }
   .site-nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 24px; border-radius:9999px; background:rgba(255,255,255,0.45); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.3); box-shadow:0 2px 16px rgba(42,37,32,0.08); }
   .site-nav .brand { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:#2D2926; text-decoration:none; letter-spacing:-0.01em; white-space:nowrap; transition:color 0.2s; }
@@ -181,10 +181,10 @@
   </nav>
 </header>
 
-<main class="pt-16 pb-24">
+<main class="pt-8 pb-24">
 
   <!-- Hero Section -->
-  <section class="max-w-7xl mx-auto px-8 mb-32">
+  <section class="max-w-7xl mx-auto px-8 mb-16">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
       <div class="md:col-span-7">
         <h1 class="font-headline text-5xl md:text-7xl text-on-surface mb-8 leading-tight">
@@ -207,16 +207,16 @@
   </section>
 
   <!-- About Me Narrative Section -->
-  <section class="bg-surface-container-low py-32">
+  <section class="bg-surface-container-low py-16">
     <div class="max-w-7xl mx-auto px-8">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
         <div class="md:col-span-4">
           <h2 class="font-headline text-3xl text-on-surface mb-6">Professional Background</h2>
           <div class="space-y-8">
             <div class="border-l border-outline-variant pl-6 py-2">
-              <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant">2024 — Present</span>
-              <h3 class="font-body font-bold text-on-surface mt-1">Researcher & Project Lead</h3>
-              <p class="font-body text-sm text-on-surface-variant">Insight Research Ireland Centre for Data Analytics</p>
+              <span class="font-label text-[0.7rem] uppercase tracking-widest text-on-surface-variant">2023 — Present</span>
+              <h3 class="font-body font-bold text-on-surface mt-1">[Your Current Role]</h3>
+              <p class="font-body text-sm text-on-surface-variant">[Organisation]</p>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@
   </section>
 
   <!-- Testimonial Carousel Section -->
-  <section class="max-w-7xl mx-auto px-8 py-32 relative overflow-hidden">
+  <section class="max-w-7xl mx-auto px-8 pt-16 pb-8 relative overflow-hidden">
     <div class="relative max-w-4xl mx-auto" id="testimonial-carousel">
 
       <!-- Testimonial 1 -->
@@ -489,6 +489,7 @@
   showSlide(0);
   startTimer();
 </script>
+
 <link rel="stylesheet" href="../chatbot/chatbot.css">
 <script src="../chatbot/chatbot.js" defer></script>
 
