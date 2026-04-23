@@ -493,7 +493,8 @@
   startTimer();
 </script>
 
-<link rel="stylesheet" href="../chatbot/chatbot.css">
-<script src="../chatbot/chatbot.js" defer></script>
+<link rel="preload" as="style" href="chatbot/chatbot.css" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="chatbot/chatbot.css"></noscript>
+<script src="chatbot/chatbot.js" defer></script>
 
 </body></html>
