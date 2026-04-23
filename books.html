@@ -972,7 +972,8 @@ buildFilters();
 renderBooks();
 </script>
 
-<link rel="stylesheet" href="chatbot/chatbot.css">
+<link rel="preload" as="style" href="chatbot/chatbot.css" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="chatbot/chatbot.css"></noscript>
 <script src="chatbot/chatbot.js" defer></script>
 <script src="assets/js/easter-egg.js" defer></script>
     
