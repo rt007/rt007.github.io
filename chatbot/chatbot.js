@@ -18,6 +18,7 @@
     SUGGESTIONS: [
       "Tell me about his current role as a Researcher.",
       "What recent projects has he worked on?",
+      "What AI projects has he been involved in?",
       "Provide me his CV!",
     ],
     WELCOME_MESSAGE:
