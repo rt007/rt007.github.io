@@ -29,7 +29,7 @@
     .egg-popping { animation: egg-spin-pop 0.55s ease forwards !important; }
 
     .egg-confetti-dot {
-      position: fixed; border-radius: 50%;
+      position: fixed;
       pointer-events: none; z-index: 9999;
       animation: egg-fall linear forwards;
     }
@@ -80,21 +80,25 @@
     });
   });
 
-  function spawnConfetti(anchor) {
+function spawnConfetti(anchor) {
     const rect = anchor.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
     const colors = ['#c45d3e', '#a78bfa', '#f59e0b', '#10b981', '#3b82f6', '#f472b6'];
+    const symbols = ['</', '{}', '=>', '()', '[]', '&&', '//', '!=', '**', ';;'];
+
     for (let i = 0; i < 30; i++) {
-      const dot = document.createElement('div');
+      const dot = document.createElement('span');
       dot.className = 'egg-confetti-dot';
-      const size = 5 + Math.random() * 6;
+      dot.textContent = symbols[Math.floor(Math.random() * symbols.length)];
       const angle = Math.random() * 2 * Math.PI;
       const dist = 40 + Math.random() * 65;
       const dur = 0.45 + Math.random() * 0.5;
       dot.style.cssText = `
-        width:${size}px; height:${size}px;
-        background:${colors[Math.floor(Math.random() * colors.length)]};
+        color:${colors[Math.floor(Math.random() * colors.length)]};
+        font-family: monospace;
+        font-size: ${10 + Math.floor(Math.random() * 8)}px;
+        font-weight: 700;
         left:${cx + Math.cos(angle) * dist}px;
         top:${cy + Math.sin(angle) * dist + window.scrollY}px;
         animation-duration:${dur}s;
