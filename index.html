@@ -178,7 +178,7 @@ main { flex:1; }
     <div class="inner">
       <div class="section-header">
         <h2 class="section-heading">Recent Projects</h2>
-        <span class="section-count">12 projects</span>
+        <span class="section-count">13 projects</span>
       </div>
 
       <div class="projects-grid">
@@ -276,7 +276,52 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 4. Life Calendar -->
+        <!-- 4. Pomodoro Focus Timer -->
+        <div class="project-card">
+          <div class="project-card-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:64px;opacity:0.75;">
+              <!-- Clock face -->
+              <circle cx="40" cy="40" r="28" fill="none" stroke="#c45d3e" stroke-width="3"/>
+              <!-- Progress arc (~75% filled, representing a session in progress) -->
+              <circle cx="40" cy="40" r="28" fill="none" stroke="#c45d3e" stroke-width="3"
+                stroke-dasharray="131.9 175.9" stroke-dashoffset="44"
+                stroke-linecap="round" opacity="0.25" transform="rotate(-90 40 40)"/>
+              <!-- Center dot -->
+              <circle cx="40" cy="40" r="2.5" fill="#c45d3e"/>
+              <!-- Minute hand -->
+              <line x1="40" y1="40" x2="40" y2="17" stroke="#c45d3e" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Hour hand -->
+              <line x1="40" y1="40" x2="52" y2="46" stroke="#c45d3e" stroke-width="2" stroke-linecap="round"/>
+              <!-- Tomato stem -->
+              <line x1="40" y1="12" x2="40" y2="7" stroke="#c45d3e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="40" y1="9" x2="45" y2="5" stroke="#c45d3e" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="icon-bg">timer</span>
+          </div>
+          <div class="project-card-body">
+            <span class="project-tag">Tool · Web App</span>
+            <h3>Pomodoro Focus Timer</h3>
+            <p>A clean Pomodoro focus timer with session history, streaks, Web Audio sounds, and desktop notifications.</p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-icon" data-tip="JavaScript" data-short="JS"><img src="assets/icons/javascript.svg" alt="JavaScript"></span>
+            <span class="stack-icon" data-tip="HTML" data-short="HT"><img src="assets/icons/html.svg" alt="HTML"></span>
+            <span class="stack-icon" data-tip="CSS" data-short="CSS"><img src="assets/icons/css.svg" alt="CSS"></span>
+            <span class="stack-icon" data-tip="Web Audio API" data-short="WA"><img src="assets/icons/webaudioapi.svg" alt="Web Audio API"></span>
+          </div>
+          <div class="project-card-footer">
+            <a href="https://rt007.github.io/pomodoro-app/" target="_blank" rel="noopener" class="project-link primary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live demo
+            </a>
+            <a href="https://github.com/rt007/pomodoro-app" target="_blank" rel="noopener" class="project-link secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Source code
+            </a>
+          </div>
+        </div>
+        
+        <!-- 5. Life Calendar -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">grid_view</span>
@@ -304,7 +349,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 5. About -->
+        <!-- 6. About -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">person</span>
@@ -327,7 +372,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 6. Research -->
+        <!-- 7. Research -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">device_hub</span>
@@ -350,7 +395,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 7. Books -->
+        <!-- 8. Books -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">menu_book</span>
@@ -373,7 +418,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 8. My Room -->
+        <!-- 9. My Room -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">360</span>
@@ -396,7 +441,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 9. DT4EM -->
+        <!-- 10. DT4EM -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">crisis_alert</span>
@@ -422,7 +467,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 10. DT4I -->
+        <!-- 11. DT4I -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">location_city</span>
@@ -447,7 +492,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 11. Digital Twins Podcast -->
+        <!-- 12. Digital Twins Podcast -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">podcasts</span>
@@ -472,7 +517,7 @@ main { flex:1; }
           </div>
         </div>
 
-        <!-- 12. Resume -->
+        <!-- 13. Resume -->
         <div class="project-card">
           <div class="project-card-icon">
             <span class="mat-icon-lg">description</span>
