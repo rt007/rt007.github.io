@@ -1,0 +1,103 @@
+/* ==========================================================
+   Dark mode — lives at assets/darkmode/
+   Add to every page <head>:
+     <link rel="stylesheet" href="assets/darkmode/darkmode.css">
+     <script src="assets/darkmode/darkmode.js"></script>
+   For about/index.html use:
+     <link rel="stylesheet" href="../assets/darkmode/darkmode.css">
+     <script src="../assets/darkmode/darkmode.js"></script>
+   ========================================================== */
+
+/* ── Toggle button ── */
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 2px;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  line-height: 1;
+}
+#theme-toggle:hover {
+  background: rgba(45, 41, 38, 0.07);
+  border-color: var(--border);
+}
+#theme-toggle svg {
+  display: block;
+  pointer-events: none;
+}
+
+/* ── Dark mode variable overrides ──
+   :root[data-theme="dark"] has specificity (0,2,0) which wins
+   over the plain :root (0,1,0) defined inline in each page.   */
+:root[data-theme="dark"] {
+  --cream:      #1d1b18;
+  --text:       #ede8e2;
+  --text-muted: #a89d8f;
+  --accent:     #e07a5a;   /* slightly warmer/brighter for dark bg contrast */
+  --card-bg:    #262320;
+  --border:     #3d3731;
+  --shadow:     rgba(0, 0, 0, 0.28);
+  --hero-bg:    #222019;
+  /* nav-bg and nav-text stay the same — they're already dark */
+}
+
+/* ── Nav glassmorphism — invert for dark bg ── */
+:root[data-theme="dark"] .site-nav-inner {
+  background: rgba(22, 20, 18, 0.72);
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme="dark"] .nav-links a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="dark"] #theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border);
+}
+
+/* ── Cards ── */
+:root[data-theme="dark"] .project-card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .project-card-icon {
+  background: rgba(224, 122, 90, 0.09);
+}
+
+:root[data-theme="dark"] .project-tag {
+  background: rgba(224, 122, 90, 0.14);
+  color: var(--accent);
+}
+
+/* ── Hero social buttons ── */
+:root[data-theme="dark"] .hero-socials a:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Images — subtle dim so they don't blaze on dark bg ── */
+:root[data-theme="dark"] img:not([src$=".svg"]) {
+  filter: brightness(0.9);
+}
+
+/* ── Smooth theme transition (applied after first paint) ── */
+.theme-ready,
+.theme-ready *,
+.theme-ready *::before,
+.theme-ready *::after {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.2s ease,
+    box-shadow 0.25s ease !important;
+}
