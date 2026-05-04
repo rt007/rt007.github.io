@@ -237,15 +237,26 @@
 /* ==========================================================
    SMOOTH THEME TRANSITION
    Applied after first paint so initial load doesn't animate.
-   Excludes img so hover effects (grayscale, scale) are not broken.
+   Only targets structural containers — elements with no hover
+   transform/animation of their own — so existing page animations
+   are completely untouched.
    ========================================================== */
-.theme-ready :not(img),
-.theme-ready :not(img)::before,
-.theme-ready :not(img)::after {
+.theme-ready body,
+.theme-ready .site-header,
+.theme-ready .site-nav-inner,
+.theme-ready .site-nav .brand,
+.theme-ready .nav-links a,
+.theme-ready main,
+.theme-ready section,
+.theme-ready .filters,
+.theme-ready .site-footer,
+.theme-ready .footer-col,
+.theme-ready .room-scene,
+.theme-ready .viewer-portal,
+.theme-ready .drag-hint {
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
     color 0.2s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease !important;
+    box-shadow 0.25s ease;
 }
