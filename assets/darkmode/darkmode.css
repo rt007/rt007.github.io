@@ -35,26 +35,71 @@
   pointer-events: none;
 }
 
-/* ── Dark mode variable overrides ──
-   :root[data-theme="dark"] has specificity (0,2,0) which wins
-   over the plain :root (0,1,0) defined inline in each page.   */
+/* ==========================================================
+   DARK MODE VARIABLE OVERRIDES
+   :root[data-theme="dark"] has specificity (0,2,0) which always
+   beats the plain :root (0,1,0) defined inline in each page.
+   ========================================================== */
+
+/* ── Shared variables (index, research, myroom) ── */
 :root[data-theme="dark"] {
   --cream:      #1d1b18;
   --text:       #ede8e2;
   --text-muted: #a89d8f;
-  --accent:     #e07a5a;   /* slightly warmer/brighter for dark bg contrast */
+  --accent:     #e07a5a;
   --card-bg:    #262320;
   --border:     #3d3731;
   --shadow:     rgba(0, 0, 0, 0.28);
   --hero-bg:    #222019;
-  /* nav-bg and nav-text stay the same — they're already dark */
+  /* --nav-bg / --nav-text stay the same — already dark */
 }
 
-/* ── Nav glassmorphism — invert for dark bg ── */
+/* ── Books page — uses different variable names ── */
+:root[data-theme="dark"] {
+  --bg:              #1d1b18;
+  --bg-warm:         #222019;
+  --tag-bg:          #2e2b27;
+  --tag-active:      #ede8e2;
+  --tag-active-text: #1d1b18;
+  --accent-soft:     #c47a5a;
+}
+
+/* ── About page — Material Design 3 surface tokens ── */
+:root[data-theme="dark"] {
+  --background:                  #1a1714;
+  --surface:                     #1a1714;
+  --surface-bright:              #1a1714;
+  --surface-dim:                 #120f0c;
+  --surface-container-lowest:    #140e0b;
+  --surface-container-low:       #1f1c19;
+  --surface-container:           #242220;
+  --surface-container-high:      #2a2825;
+  --surface-container-highest:   #302e2b;
+  --surface-variant:             #302e2b;
+  --on-background:               #ede8e2;
+  --on-surface:                  #ede8e2;
+  --on-surface-variant:          #c4b8b0;
+  --outline:                     #7a6d66;
+  --outline-variant:             #4a3f38;
+  --secondary-container:         #2e2b27;
+  --inverse-surface:             #ede8e2;
+  --inverse-on-surface:          #1a1714;
+  /* primary / primary-container (terracotta) left as-is — good contrast on dark */
+}
+
+/* ==========================================================
+   NAV & HEADER — shared across all pages
+   ========================================================== */
 :root[data-theme="dark"] .site-nav-inner {
   background: rgba(22, 20, 18, 0.72);
   border-color: rgba(255, 255, 255, 0.07);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+}
+
+/* About page hardcodes .site-header background instead of using a variable */
+:root[data-theme="dark"] .site-header {
+  background: #222019;
+  border-bottom-color: #3d3731;
 }
 
 :root[data-theme="dark"] .nav-links a:hover {
@@ -66,38 +111,95 @@
   border-color: var(--border);
 }
 
-/* ── Cards ── */
+/* ==========================================================
+   HOME PAGE
+   ========================================================== */
 :root[data-theme="dark"] .project-card:hover {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
 }
-
 :root[data-theme="dark"] .project-card-icon {
   background: rgba(224, 122, 90, 0.09);
 }
-
 :root[data-theme="dark"] .project-tag {
   background: rgba(224, 122, 90, 0.14);
   color: var(--accent);
 }
 
-/* ── Hero social buttons ── */
+/* ==========================================================
+   RESEARCH PAGE — hardcoded section backgrounds
+   ========================================================== */
+:root[data-theme="dark"] .section-focus {
+  background: #201e1b;
+}
+:root[data-theme="dark"] .section-featured {
+  background: rgba(224, 122, 90, 0.05);
+}
+:root[data-theme="dark"] .pub-cover {
+  background: #3d3731;
+}
+:root[data-theme="dark"] .featured-card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+:root[data-theme="dark"] .featured-tag {
+  background: rgba(224, 122, 90, 0.14);
+  color: var(--accent);
+}
+
+/* ==========================================================
+   BOOKS PAGE — hardcoded placeholder + filter bar
+   ========================================================== */
+:root[data-theme="dark"] .book-cover-placeholder {
+  background: linear-gradient(145deg, #2a2722, #231f1b);
+}
+:root[data-theme="dark"] .book-cover-wrap:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================
+   MY ROOM PAGE — hardcoded warm gradient scene
+   ========================================================== */
+:root[data-theme="dark"] .room-scene {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, #2a2015 0%, transparent 70%),
+    linear-gradient(175deg, #1e1c18 0%, #1a1814 40%, #161411 100%);
+}
+:root[data-theme="dark"] .viewer-portal {
+  background: #262320;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+:root[data-theme="dark"] .drag-hint {
+  color: #a89d8f;
+}
+:root[data-theme="dark"] .drag-hint-icon {
+  border-color: rgba(168, 157, 143, 0.35);
+}
+
+/* ==========================================================
+   HERO SOCIAL BUTTONS — all pages
+   ========================================================== */
 :root[data-theme="dark"] .hero-socials a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-/* ── Images — subtle dim so they don't blaze on dark bg ── */
+/* ==========================================================
+   IMAGES — subtle dim on dark bg
+   ========================================================== */
 :root[data-theme="dark"] img:not([src$=".svg"]) {
-  filter: brightness(0.9);
+  filter: brightness(0.88);
 }
 
-/* ── Smooth theme transition (applied after first paint) ── */
-.theme-ready,
-.theme-ready *,
-.theme-ready *::before,
-.theme-ready *::after {
+/* ==========================================================
+   SMOOTH THEME TRANSITION
+   Applied after first paint so the initial load doesn't animate.
+   Excludes img so hover effects (grayscale, scale) are not broken.
+   ========================================================== */
+.theme-ready :not(img),
+.theme-ready :not(img)::before,
+.theme-ready :not(img)::after {
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
     color 0.2s ease,
-    box-shadow 0.25s ease !important;
+    box-shadow 0.25s ease,
+    filter 0.25s ease !important;
 }
