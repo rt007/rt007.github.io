@@ -64,29 +64,6 @@
   --accent-soft:     #c47a5a;
 }
 
-/* ── About page — Material Design 3 surface tokens ── */
-:root[data-theme="dark"] {
-  --background:                  #1a1714;
-  --surface:                     #1a1714;
-  --surface-bright:              #1a1714;
-  --surface-dim:                 #120f0c;
-  --surface-container-lowest:    #140e0b;
-  --surface-container-low:       #1f1c19;
-  --surface-container:           #242220;
-  --surface-container-high:      #2a2825;
-  --surface-container-highest:   #302e2b;
-  --surface-variant:             #302e2b;
-  --on-background:               #ede8e2;
-  --on-surface:                  #ede8e2;
-  --on-surface-variant:          #c4b8b0;
-  --outline:                     #7a6d66;
-  --outline-variant:             #4a3f38;
-  --secondary-container:         #2e2b27;
-  --inverse-surface:             #ede8e2;
-  --inverse-on-surface:          #1a1714;
-  /* primary / primary-container (terracotta) left as-is — good contrast on dark */
-}
-
 /* ==========================================================
    NAV & HEADER — shared across all pages
    ========================================================== */
@@ -96,19 +73,88 @@
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
 }
 
-/* About page hardcodes .site-header background instead of using a variable */
+/* About page hardcodes .site-header background (other pages use var(--hero-bg)) */
 :root[data-theme="dark"] .site-header {
   background: #222019;
   border-bottom-color: #3d3731;
 }
 
+/* About page hardcodes nav text colors — override so text stays visible on dark nav */
+:root[data-theme="dark"] .site-nav .brand {
+  color: #ede8e2;
+}
+:root[data-theme="dark"] .site-nav .brand:hover {
+  color: #e07a5a;
+}
+:root[data-theme="dark"] .nav-links a {
+  color: #ede8e2;
+}
 :root[data-theme="dark"] .nav-links a:hover {
   background: rgba(255, 255, 255, 0.08);
+  color: #ede8e2;
 }
 
 :root[data-theme="dark"] #theme-toggle:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: var(--border);
+  border-color: #3d3731;
+}
+
+/* ==========================================================
+   ABOUT PAGE — Tailwind utility class overrides
+   The About page uses Tailwind with hardcoded color values
+   (not CSS variables), so variable overrides alone do nothing.
+   We target the utility classes directly.
+   ========================================================== */
+
+/* Body & base surfaces */
+:root[data-theme="dark"] body {
+  background-color: #1a1714;
+  color: #ede8e2;
+}
+:root[data-theme="dark"] .bg-surface,
+:root[data-theme="dark"] .bg-surface-bright {
+  background-color: #1a1714;
+}
+:root[data-theme="dark"] .bg-surface-container-low {
+  background-color: #1f1c19;
+}
+:root[data-theme="dark"] .bg-surface-container {
+  background-color: #242220;
+}
+:root[data-theme="dark"] .bg-surface-container-high {
+  background-color: #2a2825;
+}
+:root[data-theme="dark"] .bg-surface-container-highest {
+  background-color: #302e2b;
+}
+
+/* Text colours */
+:root[data-theme="dark"] .text-on-surface {
+  color: #ede8e2;
+}
+:root[data-theme="dark"] .text-on-surface-variant {
+  color: #c4b8b0;
+}
+
+/* Borders */
+:root[data-theme="dark"] .border-outline-variant {
+  border-color: #4a3f38;
+}
+:root[data-theme="dark"] .border-outline {
+  border-color: #7a6d66;
+}
+
+/* Testimonial pagination bars */
+:root[data-theme="dark"] .pagination-bar {
+  background-color: #4a3f38;
+}
+:root[data-theme="dark"] .pagination-bar.active {
+  background-color: #4a3f38;
+}
+
+/* CTA buttons — keep terracotta, just brighten slightly */
+:root[data-theme="dark"] a.bg-\[#C45D3E\] {
+  background-color: #e07a5a;
 }
 
 /* ==========================================================
@@ -182,7 +228,7 @@
 }
 
 /* ==========================================================
-   IMAGES — subtle dim on dark bg
+   IMAGES — subtle dim on dark bg, preserve hover animations
    ========================================================== */
 :root[data-theme="dark"] img:not([src$=".svg"]) {
   filter: brightness(0.88);
@@ -190,7 +236,7 @@
 
 /* ==========================================================
    SMOOTH THEME TRANSITION
-   Applied after first paint so the initial load doesn't animate.
+   Applied after first paint so initial load doesn't animate.
    Excludes img so hover effects (grayscale, scale) are not broken.
    ========================================================== */
 .theme-ready :not(img),
