@@ -12,7 +12,7 @@
     BOT_NAME: "Romal's AI Assistant",
     BOT_INITIAL: "R",
     USER_INITIAL: "You",
-    CV_URL: "https://romalthakkar.cv",
+    CV_URL: "https://romalbuilds.com/rtresume",
     // CV-related keywords that trigger the View CV button
     CV_KEYWORDS: ["cv", "curriculum vitae", "resume", "résumé", "download cv", "view cv", "provide", "share cv"],
     SUGGESTIONS: [
